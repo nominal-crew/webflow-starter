@@ -8,7 +8,8 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "VITE_STAGING_AUTO_DEPLOY=1 vite build --mode staging --watch",
+    "dev:local": "vite",
     "build": "vite build",
     "build:staging": "vite build --mode staging",
     "build:production": "vite build --mode production",

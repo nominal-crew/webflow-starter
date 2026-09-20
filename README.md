@@ -31,15 +31,26 @@ pnpm install
 
 ## Development
 
+Default workflow (staging CDN, Odyn-style): watch sources, rebuild on save, upload
+to R2 staging automatically. Webflow staging must load assets from your CDN
+(`PUBLIC_ASSET_URL` + `R2_STAGING_PREFIX`). Refresh the page after each upload;
+there is no in-browser live reload on Webflow.
+
 ```bash
 pnpm dev
 ```
 
-Vite runs locally on:
+Optional local Vite server (localhost HMR, no R2 upload):
+
+```bash
+pnpm dev:local
+```
 
 ```text
-http://localhost:5173
+http://localhost:3000/src/js/main.js
 ```
+
+Point Webflow custom code at that URL only on your machine.
 
 ## Build
 
@@ -83,13 +94,13 @@ pnpm format
 
 ## Deployment
 
-Staging:
+One-off staging upload (same output as `pnpm dev`, without watch):
 
 ```bash
 pnpm deploy:staging
 ```
 
-Production:
+Production (explicit only, minified):
 
 ```bash
 pnpm deploy:production
