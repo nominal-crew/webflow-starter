@@ -1,0 +1,44 @@
+/* Default Button */
+
+.button {
+  --duration: var(--duration-normal);
+  --motion: var(--motion-osmo);
+  transition: color var(--duration) var(--motion);
+
+  /* Text */
+
+  & .button__label span {
+    display: inline-block;
+    position: relative;
+    text-shadow: 0 1.3em currentcolor;
+    transform: translateY(0) rotate(0.001deg);
+    transition: transform var(--duration) var(--motion);
+  }
+
+  /* Background */
+
+  & .button__bg {
+    transition:
+      inset var(--duration) var(--motion),
+      border-color var(--duration) var(--motion),
+      background-color var(--duration) var(--motion);
+  }
+}
+
+.button:hover {
+  color: var(--button-hover--text);
+
+  /* Text */
+
+  & .button__label span {
+    transform: translateY(-1.3em) rotate(0.001deg);
+  }
+
+  /* Background */
+
+  .button__bg {
+    inset: 0.125em;
+    border-color: var(--button-hover--border);
+    background-color: var(--button-hover--background);
+  }
+}

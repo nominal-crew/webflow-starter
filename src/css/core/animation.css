@@ -1,0 +1,27 @@
+/* GSAP SplitText */
+
+.line-mask {
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+.line p {
+  margin-bottom: 0;
+}
+
+/* Scroll Reveal */
+
+@media screen and (width >= 992px) {
+  html:not(.wf-design-mode) {
+    [data-reveal-group],
+    [data-reveal-text='True'] {
+      opacity: 0;
+    }
+  }
+}
+
+/* Scroll Parallax */
+
+[data-parallax] {
+  height: 120%;
+}

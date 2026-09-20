@@ -1,0 +1,69 @@
+/* Base */
+
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+}
+
+html {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+textarea {
+  resize: none;
+}
+
+video {
+  object-fit: cover;
+  width: 100%;
+}
+
+svg {
+  max-width: 100%;
+}
+
+strong {
+  font-weight: 600;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button {
+  background-color: unset;
+  border: none;
+  margin: unset;
+  padding: unset;
+  text-align: inherit;
+}
+
+button:not(.is--disabled),
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button.is--disabled,
+button:disabled {
+  opacity: 0.1;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+[data-disabled] {
+  cursor: not-allowed;
+}
+
+[data-hover] {
+  cursor: pointer;
+}

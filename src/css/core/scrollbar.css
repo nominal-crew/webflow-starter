@@ -1,0 +1,36 @@
+/* Scrollbar */
+
+* {
+  scrollbar-color: rgb(0 0 0 / 25%) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  height: 0.25rem;
+  width: 0.25rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(0 0 0 / 25%);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body,
+html {
+  scrollbar-width: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  overscroll-behavior: none;
+  scroll-behavior: auto;
+}

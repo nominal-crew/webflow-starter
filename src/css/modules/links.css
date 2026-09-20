@@ -1,0 +1,79 @@
+/* Underline links */
+
+[data-underline-link] {
+  --duration: var(--duration-normal);
+  --motion: var(--motion-osmo);
+  --color: currentcolor;
+  --offset: -0.0625em;
+  --thickness: 0.0625em;
+
+  text-decoration: none;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: var(--offset);
+    left: 0;
+    width: 100%;
+    height: var(--thickness);
+    background-color: var(--color);
+    transform-origin: right;
+    transform: scaleX(0) rotate(0.001deg);
+    transition: transform var(--duration) var(--motion);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-underline-link]:hover::before,
+  [data-hover]:hover [data-underline-link]::before {
+    transform-origin: left;
+    transform: scaleX(1) rotate(0.001deg);
+  }
+}
+
+/* Alt */
+
+[data-underline-link='alt'] {
+  --delay: 0.3s;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: var(--offset);
+    left: 0;
+    width: 100%;
+    height: var(--thickness);
+    background-color: var(--color);
+    transition: transform var(--duration) var(--motion);
+  }
+
+  &::before {
+    transform-origin: left;
+    transform: scaleX(1) rotate(0.001deg);
+    transition-delay: var(--delay);
+  }
+
+  &::after {
+    transform-origin: right;
+    transform: scaleX(0) rotate(0.001deg);
+    transition-delay: 0s;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-underline-link='alt']:hover::before,
+  [data-hover]:hover [data-underline-link='alt']::before {
+    transform-origin: right;
+    transform: scaleX(0) rotate(0.001deg);
+    transition-delay: 0s;
+  }
+
+  [data-underline-link='alt']:hover::after,
+  [data-hover]:hover [data-underline-link='alt']::after {
+    transform-origin: left;
+    transform: scaleX(1) rotate(0.001deg);
+    transition-delay: var(--delay);
+  }
+}

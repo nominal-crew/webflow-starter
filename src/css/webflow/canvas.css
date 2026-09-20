@@ -1,0 +1,37 @@
+html.wf-design-mode {
+  /* Empty Elements */
+
+  .wf-empty {
+    box-shadow: none;
+    padding-bottom: 0;
+    padding-right: 0;
+  }
+
+  .w-embed:empty {
+    min-height: 0;
+  }
+
+  & .u-fit-cover {
+    pointer-events: none;
+  }
+
+  & .u-designer-hide {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* Components - Accordions */
+
+  & [data-accordion-status='not-active'] [data-accordion-bottom] {
+    grid-template-rows: 1fr;
+  }
+
+  /* Components - Cursor */
+
+  /*
+  .cursor,
+  .cursor-inner {
+    display: none;
+  }
+    */
+}

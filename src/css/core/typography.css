@@ -1,0 +1,38 @@
+/* --- Clamp --- */
+
+[class*='u-text-clamp']:not(.w-richtext),
+[class*='u-text-clamp'].w-richtext > * {
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+[class*='u-text-clamp'].w-richtext > :not(:first-child) {
+  display: none;
+}
+
+.u-text-clamp-2:not(.w-richtext),
+.u-text-clamp-2.w-richtext > * {
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+}
+
+.u-text-clamp-3:not(.w-richtext),
+.u-text-clamp-3.w-richtext > * {
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+}
+
+.u-text-clamp-4:not(.w-richtext),
+.u-text-clamp-4.w-richtext > * {
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+}
+
+.u-text-clamp-5:not(.w-richtext),
+.u-text-clamp-5.w-richtext > * {
+  line-clamp: 5;
+  -webkit-line-clamp: 5;
+}

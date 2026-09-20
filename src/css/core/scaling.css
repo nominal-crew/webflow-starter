@@ -1,0 +1,42 @@
+/* Scaling */
+
+:root {
+  /* Container */
+
+  --container-ideal: 1728;
+  --container-min: 992px;
+  --container-max: 1920px;
+  --container-width: clamp(var(--container-min), 100vw, var(--container-max));
+
+  /* Font scaling */
+
+  --fs-strength: 1;
+  --fs-unit: 16;
+  --fs-base: calc(var(--fs-unit) * 1px);
+  --fs-fluid: calc(var(--container-width) / (var(--container-ideal) / var(--fs-unit)));
+  --fs: calc(var(--fs-base) + (var(--fs-fluid) - var(--fs-base)) * var(--fs-strength));
+
+  /* Responsive */
+
+  @media screen and (width <= 991px) {
+    --container-ideal: 991;
+    --container-min: 768px;
+    --container-max: 991px;
+  }
+
+  @media screen and (width <= 767px) {
+    --container-ideal: 550;
+    --container-min: 480px;
+    --container-max: 767px;
+  }
+
+  @media screen and (width <= 479px) {
+    --container-ideal: 390;
+    --container-min: 320px;
+    --container-max: 479px;
+  }
+}
+
+html {
+  font-size: var(--fs);
+}

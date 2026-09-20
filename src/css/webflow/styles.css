@@ -1,0 +1,17 @@
+/* Styleguide */
+
+.sg-wrapper {
+  & ::selection {
+    background-color: var(--accent--accent);
+    color: var(--accent--accent-text);
+    text-shadow: none;
+  }
+}
+
+/* Hide if Empty */
+
+[data-hide-empty]:not(:has(.w-dyn-item)),
+[data-hide-empty]:empty,
+[data-hide-empty]:has(> *):not(:has(> :not(.w-condition-invisible))) {
+  display: none !important;
+}

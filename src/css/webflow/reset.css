@@ -1,0 +1,57 @@
+/* Webflow Reset */
+
+/* Embed */
+
+.w-embed {
+  &::after,
+  &::before {
+    content: unset;
+  }
+}
+
+/* Rich Text */
+
+.w-richtext {
+  &::after,
+  &::before {
+    content: unset;
+  }
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+
+  & a {
+    position: relative;
+    z-index: 4;
+    text-decoration: underline;
+  }
+
+  & li {
+    list-style: none;
+    position: relative;
+
+    &::before {
+      content: '\2022';
+      position: absolute;
+      top: 0.15em;
+      left: -1.25em;
+      font-size: 1.2em;
+      line-height: 1em;
+      color: currentcolor;
+      display: inline-block;
+    }
+  }
+
+  & figure.w-richtext-align-fullwidth {
+    max-width: 100% !important;
+
+    & > div {
+      width: 100%;
+    }
+  }
+}

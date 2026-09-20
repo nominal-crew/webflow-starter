@@ -1,0 +1,10 @@
+/* Animated Grid */
+
+/* Only if it is not in designer mode */
+
+html:not(.wf-design-mode, .wf-editor) {
+  .animated-grid {
+    display: none;
+    visibility: hidden;
+  }
+}

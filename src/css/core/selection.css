@@ -1,0 +1,11 @@
+/* Selection */
+
+::selection {
+  background-color: var(--core--text);
+  color: var(--core--background);
+  text-shadow: none;
+}
+
+img::selection {
+  background: transparent;
+}

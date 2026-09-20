@@ -1,0 +1,14 @@
+/* Variables  */
+
+:root {
+  /* Motion */
+
+  --motion-osmo: cubic-bezier(0.625, 0.05, 0, 1);
+  --motion-in-out: ease-in-out;
+
+  /* Animations */
+
+  --duration-fast: 0.4s;
+  --duration-normal: 0.6s;
+  --duration-slow: 0.9s;
+}

@@ -1,0 +1,94 @@
+/* Form validate */
+
+[data-form-validate] {
+  --label: var(--form--label);
+  --placeholder-background: var(--form--placeholder-background);
+  --placeholder-border: var(--form--placeholder-border);
+  --placeholder-text: var(--form--placeholder-text);
+  --focus-background: var(--form--focus-background);
+  --focus-border: var(--form--focus-border);
+  --focus-text: var(--form--focus-text);
+  --background: var(--form--background);
+  --border: var(--form--border);
+  --text: var(--form--text);
+  --focus: var(--form--focus);
+  --error: var(--form--error);
+  --success: var(--form--success);
+
+  /* Field: Success */
+
+  & .is--success {
+    & input,
+    & textarea,
+    & select {
+      color: var(--text);
+      border-color: var(--border);
+      background-color: var(--background);
+    }
+
+    & .form-field-icon.is--success,
+    & .radiocheck-field-icon.is--success {
+      opacity: 1;
+    }
+  }
+
+  /* Field: Error */
+
+  & .is--error {
+    & input,
+    & textarea,
+    & select {
+      color: var(--error);
+      border-color: var(--error);
+      background-color: color-mix(in srgb, var(--error) 5%, transparent 95%);
+    }
+
+    & .form-field-icon.is--error,
+    & .radiocheck-field-icon.is--error {
+      opacity: 1;
+    }
+
+    & .radiocheck-custom,
+    & input:checked ~ .radiocheck-custom {
+      border-color: var(--error);
+      color: var(--error);
+      background-color: color-mix(in srgb, var(--error) 5%, transparent 95%);
+    }
+  }
+
+  /* Field: Select */
+
+  & select:has(option[value='']:checked) {
+    color: var(--placeholder-text);
+  }
+
+  /* Field: Empty */
+
+  & .form-field-group:not(.is--error) {
+    & input:placeholder-shown:not(:focus-visible),
+    & textarea:placeholder-shown:not(:focus-visible),
+    & select:invalid {
+      border-color: var(--placeholder-border);
+      background-color: var(--placeholder-background);
+      color: var(--placeholder-text);
+    }
+  }
+
+  /* Field: Custom Radio or Checkbox */
+
+  & .radiocheck-field input:focus-visible ~ .radiocheck-custom {
+    background-color: var(--focus-background);
+    border-color: var(--focus-border);
+  }
+
+  & .radiocheck-field input:checked ~ .radiocheck-custom,
+  & .radiocheck-field input:focus-visible:checked ~ .radiocheck-custom {
+    border-color: var(--focus-border);
+    background-color: var(--focus-background);
+    color: var(--focus-text);
+  }
+
+  & .radiocheck-field .radiocheck-label.is--small {
+    margin-top: 0.125em;
+  }
+}

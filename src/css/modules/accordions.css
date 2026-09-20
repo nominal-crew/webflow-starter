@@ -1,0 +1,26 @@
+/*  Accordions */
+
+[data-accordion] {
+  --duration: var(--duration-normal);
+  --motion: var(--motion-osmo);
+}
+
+/* Animate Accordion Bottom Grid */
+
+[data-accordion-bottom] {
+  transition: grid-template-rows var(--duration) var(--motion);
+}
+
+[data-accordion-status='active'] [data-accordion-bottom] {
+  grid-template-rows: 1fr;
+}
+
+/* Animate Icon */
+
+[data-accordion-icon] {
+  transition: transform var(--duration) var(--motion);
+}
+
+[data-accordion-status='active'] [data-accordion-icon] {
+  transform: rotate(0.001deg);
+}
