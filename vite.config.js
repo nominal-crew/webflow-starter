@@ -20,15 +20,15 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: './src/js/main.js',
         formats: ['es'],
-        fileName: () => 'main.js'
+        fileName: () => 'bundle.js'
       },
 
       rollupOptions: {
         output: {
-          entryFileNames: 'main.js',
+          entryFileNames: 'bundle.js',
           assetFileNames: (assetInfo) => {
             if (assetInfo.name?.endsWith('.css')) {
-              return 'main.css';
+              return 'bundle.css';
             }
 
             return 'assets/[name][extname]';

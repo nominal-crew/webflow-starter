@@ -31,10 +31,24 @@ pnpm install
 
 ## Development
 
-Default workflow (staging CDN, Odyn-style): watch sources, rebuild on save, upload
-to R2 staging automatically. Webflow staging must load assets from your CDN
-(`PUBLIC_ASSET_URL` + `R2_STAGING_PREFIX`). Refresh the page after each upload;
-there is no in-browser live reload on Webflow.
+Default workflow (staging CDN): watch sources, rebuild on save, upload to R2
+staging, then ping open browser tabs to reload. Webflow staging must load
+`bundle.js` and `bundle.css` from your CDN (`PUBLIC_ASSET_URL` +
+`R2_STAGING_PREFIX`).
+
+Add this once in **Webflow staging** custom code (footer), while `pnpm dev` runs
+on your machine:
+
+```html
+<script defer src="http://localhost:35729/live-reload.js"></script>
+```
+
+Keep your CDN tags as usual, for example:
+
+```html
+<link rel="stylesheet" href="https://cdn.example.com/staging/bundle.css" />
+<script defer src="https://cdn.example.com/staging/bundle.js"></script>
+```
 
 ```bash
 pnpm dev
@@ -62,8 +76,8 @@ Production assets are generated in:
 
 ```text
 dist/
-├── main.js
-└── main.css
+├── bundle.js
+└── bundle.css
 ```
 
 ## Quality checks

@@ -2,8 +2,8 @@ export default {
   name: 'webflow-starter',
 
   assets: {
-    js: 'main.js',
-    css: 'main.css'
+    js: 'bundle.js',
+    css: 'bundle.css'
   },
 
   environments: {

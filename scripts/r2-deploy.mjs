@@ -47,12 +47,12 @@ export async function deployEnvironment(environment) {
 
   const files = [
     {
-      source: path.resolve('dist/main.js'),
+      source: path.resolve('dist', config.assets.js),
       destination: `${prefix}/${config.assets.js}`,
       contentType: 'application/javascript; charset=utf-8'
     },
     {
-      source: path.resolve('dist/main.css'),
+      source: path.resolve('dist', config.assets.css),
       destination: `${prefix}/${config.assets.css}`,
       contentType: 'text/css; charset=utf-8'
     }
