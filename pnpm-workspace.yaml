@@ -1,2 +1,4 @@
 packages:
   - '.'
+minimumReleaseAgeExclude:
+  - '@nominalcrew/webflow-kit@0.1.0'

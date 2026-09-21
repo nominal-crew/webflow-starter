@@ -8,8 +8,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "VITE_STAGING_AUTO_DEPLOY=1 vite build --mode staging --watch",
-    "dev:local": "vite",
+    "dev": "vite",
     "build": "vite build",
     "build:staging": "vite build --mode staging",
     "build:production": "vite build --mode production",
@@ -21,8 +20,8 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "check": "pnpm lint && pnpm format:check && pnpm build",
-    "deploy:staging": "pnpm build:staging && node scripts/deploy.mjs staging",
-    "deploy:production": "pnpm build:production && node scripts/deploy.mjs production",
+    "deploy:staging": "pnpm build:staging && webflow-kit deploy staging",
+    "deploy:production": "pnpm build:production && webflow-kit deploy production",
     "prepare": "husky"
   },
   "dependencies": {
@@ -31,8 +30,8 @@
     "lenis": "^1.3.26"
   },
   "devDependencies": {
-    "@aws-sdk/client-s3": "^3.0.0",
     "@eslint/js": "^10.0.1",
+    "@nominalcrew/webflow-kit": "^0.1.0",
     "dotenv": "^17.0.0",
     "eslint": "^10.10.0",
     "globals": "^17.12.0",

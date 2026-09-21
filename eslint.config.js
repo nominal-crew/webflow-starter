@@ -3,7 +3,7 @@ import globals from 'globals';
 
 export default [
   {
-    ignores: ['dist/**', 'node_modules/**']
+    ignores: ['dist/**', 'node_modules/**', '.wrangler/**']
   },
 
   js.configs.recommended,
@@ -21,13 +21,6 @@ export default [
     },
 
     rules: {
-      // 'no-console': [
-      //   'warn',
-      //   {
-      //     allow: ['warn', 'error']
-      //   }
-      // ],
-
       'no-unused-vars': [
         'warn',
         {
@@ -42,7 +35,7 @@ export default [
   },
 
   {
-    files: ['*.js', 'scripts/**/*.js', 'scripts/**/*.mjs'],
+    files: ['*.js'],
 
     languageOptions: {
       globals: {
