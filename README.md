@@ -13,10 +13,11 @@ You work here. The other two packages are dependencies:
 
 ```text
 Webflow page
+  → Head <link> to {name}/staging/bundle.css   (canvas + published HTML)
   → loader.js (CDN)
-      → ?nc-env=dev     → https://localhost:3000  (pnpm dev)
-      → *.webflow.io    → cdn…/{name}/staging/bundle.*
-      → custom domain   → cdn…/{name}/production/bundle.*
+      → ?nc-env=dev     → https://localhost:3000  (pnpm dev); CSS <link> disabled
+      → *.webflow.io    → staging bundle.js; CSS <link> unchanged
+      → custom domain   → production bundle.js; CSS <link> rewritten to production
 ```
 
 `name` comes from `webflow.config.js` and must match the loader `data-project`.
@@ -57,15 +58,16 @@ Set `name` in `webflow.config.js` to the site slug (R2 folder). Keep `assets` as
 
 ### 4. Webflow
 
-Site Settings → Custom Code → Head — only this (replace the slug):
+Site Settings → Custom Code → Head — staging CSS first, then the loader (replace the slug):
 
 ```html
+<link rel="stylesheet" href="https://cdn.nominalcrew.com/webflow-starter/staging/bundle.css" />
 <script src="https://cdn.nominalcrew.com/loader.js" data-project="webflow-starter"></script>
 ```
 
-Do not add `bundle.js` or `bundle.css` in Webflow. Publish the site so the `.webflow.io` URL exists, then put that URL in `WEBFLOW_STAGING_URL`.
+Do not add `bundle.js` in Webflow. The `<link>` must come before the script so the loader can retarget it on production. Publish the site so the `.webflow.io` URL exists, then put that URL in `WEBFLOW_STAGING_URL`.
 
-The CDN loader must be the version that understands `nc-env=dev`. If `?nc-env=dev` still loads staging files, deploy [webflow-loader](../webflow-loader) with `pnpm deploy:loader`.
+The CDN loader must be the version that understands `nc-env=dev` and production CSS switching. If `?nc-env=dev` still loads staging files, deploy [webflow-loader](../webflow-loader) with `pnpm deploy:loader`.
 
 ## Daily development
 
@@ -75,12 +77,12 @@ pnpm dev
 
 Vite starts on `https://localhost:3000` and opens `{WEBFLOW_STAGING_URL}?nc-env=dev`.
 
-- CSS save → hot reload
-- JS save → full page reload
-- First run: if nothing loads, open `https://localhost:3000`, accept the certificate, reload the Webflow tab
-- Stay on local files for the tab (`sessionStorage`) until you open `?nc-env=off`
+- CSS save → HMR on the published tab, and `{name}/staging/bundle.js` + `bundle.css` are uploaded (refresh the canvas for CSS)
+- JS save → full page reload, same staging upload (`.webflow.io` without `?nc-env=dev` then has the last save)
+- First run: if nothing loads, confirm Vite is running on `http://localhost:3000`, then reload the Webflow tab
+- Local Vite only while `?nc-env=dev` is in the URL; without it, `.webflow.io` uses staging CDN
 
-Without `WEBFLOW_STAGING_URL`, Vite still runs and logs a warning; it does not open the browser.
+Without `WEBFLOW_STAGING_URL`, Vite still runs and logs a warning; it does not open the browser. Staging sync needs the R2 variables. Disable it with `WEBFLOW_SYNC_STAGING=false`.
 
 ## Share and go live
 
@@ -110,7 +112,7 @@ pnpm format
 
 ## Stack
 
-Webflow, Vite, pnpm, Barba.js, GSAP, Lenis, ESLint, Stylelint, Prettier, Husky, lint-staged, Cloudflare R2, `@nominalcrew/webflow-kit`.
+Webflow, Vite, pnpm, Barba.js, GSAP, Lenis, ESLint, Stylelint, Prettier, Cloudflare R2, `@nominalcrew/webflow-kit`.
 
 `vite.config.js` only passes `mode`, `webflow.config.js`, and `cdn` into `webflowKit()`. Options and env vars are documented in the [webflow-kit README](https://www.npmjs.com/package/@nominalcrew/webflow-kit).
 
