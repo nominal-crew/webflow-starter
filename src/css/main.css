@@ -14,6 +14,7 @@
 @import url('./core/scrollbar.css');
 @import url('./core/lenis.css');
 @import url('./core/animation.css');
+@import url('./core/transitions.css');
 @import url('./core/typography.css');
 
 /* Modules */

@@ -142,9 +142,18 @@ export function initAccordion() {
 
 ### Page transitions
 
-Barba uses `sync: true` (outgoing and incoming containers overlap during the GSAP transition). Override animations in `src/js/project/transition.js`. Lifecycle hooks live in `src/js/project/lifecycle.js` (`once`, `beforeEnter`, `afterEnter`).
+Barba uses `sync: true` (outgoing and incoming containers overlap during the GSAP transition). The default animation is a stacked slide: the current page moves up, a dark overlay fades in, and the next page comes from below. Override it in `src/js/project/transition.js`. Lifecycle hooks live in `src/js/project/lifecycle.js` (`once`, `beforeEnter`, `afterEnter`).
 
-In Webflow, use Barba attributes on the wrapper and container, and `data-barba-update` on persistent nav links when needed.
+In Webflow, use Barba attributes on the wrapper and container, `data-barba-update` on persistent nav links when needed, and a persistent overlay **outside** the Barba container:
+
+```html
+<div data-barba="wrapper">
+  <div data-transition-wrap>
+    <div data-transition-dark></div>
+  </div>
+  <div data-barba="container">…</div>
+</div>
+```
 
 ### Webflow forms
 

@@ -8,6 +8,7 @@ import { config } from './config.js';
 gsap.registerPlugin(CustomEase, ScrollTrigger, SplitText);
 
 CustomEase.create('osmo', '0.625, 0.05, 0, 1');
+CustomEase.create('parallax', '0.7, 0.05, 0.13, 1');
 
 gsap.defaults({
   ease: 'osmo',

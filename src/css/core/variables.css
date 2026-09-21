@@ -4,6 +4,7 @@
   /* Motion */
 
   --motion-osmo: cubic-bezier(0.625, 0.05, 0, 1);
+  --motion-parallax: cubic-bezier(0.7, 0.05, 0.13, 1);
   --motion-in-out: ease-in-out;
 
   /* Animations */

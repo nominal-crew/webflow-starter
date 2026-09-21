@@ -15,8 +15,8 @@ export const transition = {
   //
   //   return gsap.fromTo(
   //     next,
-  //     { yPercent: 100 },
-  //     { yPercent: 0, duration: 1.2 }
+  //     { y: '100vh' },
+  //     { y: '0vh', duration: 1.2, ease: 'parallax' }
   //   );
   // },
 };
